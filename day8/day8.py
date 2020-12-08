@@ -32,11 +32,10 @@ print("Part 1: {0}".format(part1))
 
 new_acc = 0
 for i in range(len(instructions)):
+	copy_i = copy.deepcopy(instructions) # helps with redundancy and avoids calling for copy_i before it gets created in case instructions[i][0] == 'acc'
 	if instructions[i][0] == 'nop':
-		copy_i = copy.deepcopy(instructions)
 		copy_i[i][0] = 'jmp'
 	elif instructions[i][0] == 'jmp':
-		copy_i = copy.deepcopy(instructions)
 		copy_i[i][0] = 'nop'
 
 	new_acc, infy = get_acc(copy_i)
